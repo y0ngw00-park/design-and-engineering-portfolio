@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Yongwoo Park — Portfolio" />
+    <title>Yongwoo Park — Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <div class="app-window">
+
+      <!-- Title Bar -->
+      <div class="win-titlebar">
+        <div class="win-titlebar__left">
+          <svg class="win-titlebar__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 12.5v-9z"/>
+          </svg>
+          <span class="win-titlebar__title">Yongwoo Park — Portfolio</span>
+        </div>
+      </div>
+
+      <!-- Menu Bar -->
+      <div class="win-menubar" role="menubar">
+        <button class="win-menu-item" role="menuitem">File</button>
+        <button class="win-menu-item" role="menuitem">Edit</button>
+        <button class="win-menu-item" role="menuitem">View</button>
+        <button class="win-menu-item" role="menuitem">Help</button>
+      </div>
+
+      <!-- Profile Section -->
+      <section class="profile-section" aria-label="Profile">
+        <div class="profile-pic-frame">
+          <img src="assets/profile/profile_pic.jpg" alt="Profile picture" class="profile-pic" width="80" height="80" />
+        </div>
+        <div class="profile-info">
+          <p class="profile-name">Yongwoo Park</p>
+          <p class="profile-role">M.Eng. Student &nbsp;·&nbsp; University of Pennsylvania</p>
+          <p class="profile-bio">I design and build things at the intersection of engineering and industrial design — from autonomous robots and embedded security systems to human-centered spatial interventions.</p>
+          <div class="profile-links">
+            <a href="mailto:hello@example.com" class="win-btn">✉&nbsp; hello@example.com</a>
+            <a href="#" class="win-btn" target="_blank" rel="noopener noreferrer">in&nbsp; LinkedIn ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="win-divider" aria-hidden="true"></div>
+
+      <!-- Tab Strip -->
+      <div class="win-tabstrip" role="tablist" aria-label="Portfolio sections">
+        <button class="win-tab win-tab--active" data-tab="projects" role="tab" aria-selected="true" aria-controls="tab-projects">Projects</button>
+        <button class="win-tab" data-tab="about" role="tab" aria-selected="false" aria-controls="tab-about">More About Me</button>
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="tab-content">
+
+        <!-- Projects -->
+        <div class="tab-panel tab-panel--active" id="tab-projects" role="tabpanel">
+          <div class="file-grid" id="project-grid">
+
+            <button class="file-card" data-index="0" aria-label="Open Pandemonium">
+              <div class="file-card__thumb"><img src="assets/pandemonium/pandemonium.jpeg" alt="" loading="lazy" /></div>
+              <span class="file-card__name">Pandemonium</span>
+            </button>
+
+            <button class="file-card" data-index="1" aria-label="Open Battle Bot">
+              <div class="file-card__thumb"><img src="assets/battle_bot/full_robot.jpg" alt="" loading="lazy" /></div>
+              <span class="file-card__name">Battle Bot</span>
+            </button>
+
+            <button class="file-card" data-index="2" aria-label="Open CHOP Waiting Room">
+              <div class="file-card__thumb"><img src="assets/chop_waiting_room/chair_types.jpg" alt="" loading="lazy" /></div>
+              <span class="file-card__name">CHOP Waiting Room</span>
+            </button>
+
+            <button class="file-card" data-index="3" aria-label="Open Helix Vault">
+              <div class="file-card__thumb"><img src="assets/helix_vault/fully_locked.jpg" alt="" loading="lazy" /></div>
+              <span class="file-card__name">Helix Vault</span>
+            </button>
+
+            <button class="file-card" data-index="4" aria-label="Open Motor Pestle">
+              <div class="file-card__thumb"><img src="assets/motor_pestle/front_view.jpg" alt="" loading="lazy" /></div>
+              <span class="file-card__name">Motor &amp; Pestle</span>
+            </button>
+
+            <button class="file-card" data-index="5" aria-label="Open Rockstar">
+              <div class="file-card__thumb"><img src="assets/rockstar/cardboard_prototype.jpeg" alt="" loading="lazy" /></div>
+              <span class="file-card__name">Rockstar</span>
+            </button>
+
+            <button class="file-card" data-index="6" aria-label="Open Senior Thesis">
+              <div class="file-card__thumb"><img src="assets/senior_thesis/antennae.jpg" alt="" loading="lazy" /></div>
+              <span class="file-card__name">Senior Thesis</span>
+            </button>
+
+            <button class="file-card" data-index="7" aria-label="Open Turntable Isolation">
+              <div class="file-card__thumb"><img src="assets/turntable_isolation/reloop_squash.jpg" alt="" loading="lazy" /></div>
+              <span class="file-card__name">Turntable Isolation</span>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- More About Me -->
+        <div class="tab-panel" id="tab-about" role="tabpanel">
+          <div class="about-panel">
+
+            <fieldset class="win-group">
+              <legend class="win-group__legend">Background</legend>
+              <p>[A few sentences about yourself — where you're from, what draws you to design and engineering, and what kind of problems you want to work on.]</p>
+            </fieldset>
+
+            <fieldset class="win-group">
+              <legend class="win-group__legend">Education</legend>
+              <div class="about-row">
+                <div class="about-row__left">
+                  <span class="about-row__title">University of Pennsylvania</span>
+                  <span class="about-row__sub">M.Eng. in [Field] · Philadelphia, PA</span>
+                </div>
+                <span class="about-row__date">Expected [Year]</span>
+              </div>
+              <div class="about-row">
+                <div class="about-row__left">
+                  <span class="about-row__title">[Undergraduate University]</span>
+                  <span class="about-row__sub">B.S. in [Field]</span>
+                </div>
+                <span class="about-row__date">[Year]</span>
+              </div>
+            </fieldset>
+
+            <fieldset class="win-group">
+              <legend class="win-group__legend">Experience</legend>
+              <div class="about-row">
+                <div class="about-row__left">
+                  <span class="about-row__title">[Company or Lab]</span>
+                  <span class="about-row__sub">[Title] · [Location]</span>
+                </div>
+                <span class="about-row__date">[Date range]</span>
+              </div>
+              <div class="about-row">
+                <div class="about-row__left">
+                  <span class="about-row__title">[Company or Lab]</span>
+                  <span class="about-row__sub">[Title] · [Location]</span>
+                </div>
+                <span class="about-row__date">[Date range]</span>
+              </div>
+            </fieldset>
+
+            <fieldset class="win-group">
+              <legend class="win-group__legend">Skills</legend>
+              <div class="skills-rows">
+                <div class="skills-row">
+                  <span class="skills-row__label">Design</span>
+                  <div class="skills-row__chips">
+                    <span class="win-chip">Figma</span>
+                    <span class="win-chip">Rhino</span>
+                    <span class="win-chip">User Research</span>
+                    <span class="win-chip">Co-Design</span>
+                    <span class="win-chip">Physical Prototyping</span>
+                  </div>
+                </div>
+                <div class="skills-row">
+                  <span class="skills-row__label">Engineering</span>
+                  <div class="skills-row__chips">
+                    <span class="win-chip">C / C++</span>
+                    <span class="win-chip">Python</span>
+                    <span class="win-chip">ESP32</span>
+                    <span class="win-chip">ATmega328PB</span>
+                    <span class="win-chip">SolidWorks</span>
+                    <span class="win-chip">3D Printing</span>
+                    <span class="win-chip">CNC Machining</span>
+                    <span class="win-chip">Laser Cutting</span>
+                  </div>
+                </div>
+                <div class="skills-row">
+                  <span class="skills-row__label">Web</span>
+                  <div class="skills-row__chips">
+                    <span class="win-chip">HTML / CSS</span>
+                    <span class="win-chip">JavaScript</span>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="win-group">
+              <legend class="win-group__legend">Outside of Work</legend>
+              <p>[Your interests, hobbies, or what you do outside of designing and building.]</p>
+            </fieldset>
+
+          </div>
+        </div>
+
+      </div><!-- /tab-content -->
+
+      <!-- Status Bar -->
+      <div class="win-statusbar">
+        <div class="win-statusbar__cell" id="file-count">8 object(s)</div>
+        <div class="win-statusbar__cell win-statusbar__cell--right">© 2026 Yongwoo Park</div>
+      </div>
+
+    </div><!-- /app-window -->
+
+
+    <!-- Modal -->
+    <div class="win-overlay" id="modal" hidden>
+      <div class="win-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-topbar-title">
+
+        <div class="win-titlebar">
+          <div class="win-titlebar__left">
+            <svg class="win-titlebar__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 4-2zm5.5 1.5v2a1 1 0 0 0 1 1h2L9.5 1.5z"/>
+            </svg>
+            <span class="win-titlebar__title" id="modal-topbar-title">Project Viewer</span>
+          </div>
+          <div class="win-titlebar__controls">
+            <button class="win-ctrl win-ctrl--close" id="modal-close" aria-label="Close">
+              <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="1" y1="1" x2="9" y2="9" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="1" x2="1" y2="9" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="win-dialog__body">
+          <div class="win-dialog__media-col">
+            <div class="win-dialog__media-frame" id="modal-media-pane"></div>
+            <div class="win-dialog__thumbstrip" id="modal-thumbstrip"></div>
+          </div>
+          <div class="win-dialog__info-col">
+            <table class="win-prop-table">
+              <tr>
+                <td class="win-prop-table__key">Category:</td>
+                <td class="win-prop-table__val" id="modal-tag">—</td>
+              </tr>
+              <tr>
+                <td class="win-prop-table__key">Project:</td>
+                <td class="win-prop-table__val" id="modal-title">—</td>
+              </tr>
+            </table>
+            <div class="win-field">
+              <label class="win-field__label">Description:</label>
+              <div class="win-field__value" id="modal-desc">—</div>
+            </div>
+            <div class="win-field">
+              <label class="win-field__label">Tags:</label>
+              <div class="win-chips" id="modal-meta"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="win-dialog__footer">
+          <div class="win-dialog__nav">
+            <button class="win-btn" id="modal-prev">◄ Prev</button>
+            <span class="win-dialog__counter" id="modal-counter">1 / 8</span>
+            <button class="win-btn" id="modal-next">Next ►</button>
+          </div>
+          <button class="win-btn win-btn--close-dialog" id="modal-close-btn">Close</button>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

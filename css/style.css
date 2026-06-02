@@ -32,7 +32,7 @@ html {
 
 body {
   font-family: 'Tahoma', 'MS Sans Serif', 'Arial', sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text);
   background-color: var(--face);
   min-height: 100dvh;
@@ -257,9 +257,13 @@ button {
   gap: 4px;
 }
 
+.win-ctrl--close svg {
+  color: #cc0000;
+}
+
 .win-ctrl__label {
   font-size: 11px;
-  color: var(--title-text);
+  color: #000000;
   white-space: nowrap;
 }
 
@@ -363,7 +367,7 @@ button {
 
 .win-tab {
   position: relative;
-  padding: 3px 14px 4px;
+  padding: 5px 22px 6px;
   background-color: var(--face);
   border: 2px solid;
   border-top-color: var(--hilight);
@@ -372,21 +376,22 @@ button {
   border-bottom-color: var(--shadow-dark);
   box-shadow: inset 1px 1px 0 var(--hilight-inner),
               inset -1px -1px 0 var(--shadow);
-  margin-right: 3px;
+  margin-right: 4px;
   cursor: pointer;
-  font-size: 11px;
-  bottom: -2px;       /* inactive: slightly lower */
+  font-size: 13px;
+  bottom: -2px;
   z-index: 0;
   user-select: none;
-  height: 22px;
+  height: 30px;
 }
 
 .win-tab--active {
   z-index: 2;
   bottom: -2px;
-  height: 24px;       /* active: slightly taller */
+  height: 33px;
+  font-weight: bold;
   background-color: var(--face);
-  border-bottom-color: var(--face); /* hide bottom border — merges into content */
+  border-bottom-color: var(--face);
   box-shadow: inset 1px 1px 0 var(--hilight-inner),
               inset -1px 0 0 var(--shadow);
 }
@@ -492,7 +497,7 @@ button {
 
 /* Filename label */
 .file-card__name {
-  font-size: 11px;
+  font-size: 13px;
   text-align: center;
   line-height: 1.3;
   padding: 1px 3px;
@@ -522,14 +527,14 @@ button {
 }
 
 .win-group__legend {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: bold;
   padding: 0 4px;
   color: var(--text);
 }
 
 .win-group p {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.6;
   color: var(--text);
 }
@@ -665,7 +670,7 @@ button {
 .win-statusbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 2px 4px;
   border-top: 1px solid var(--shadow);
   margin-top: auto;
@@ -893,7 +898,7 @@ button {
 }
 
 .modal-desc__text {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.7;
   color: var(--text);
   display: flex;

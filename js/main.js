@@ -11,23 +11,25 @@ const PROJECTS = [
     title: "Pandemonium — Dancing Stewart Platform",
     subtitle: "Michelle Lopez - Pandemonium Exhibit",
     description: [
-      "Designed and assembled a dancing Stewart platform for Michelle Lopez's Pandemonium art exhibit at the Franklin Institute.",
-      "Built custom 3-DOF joints to mount the linear actuators to the aluminum T-slot frame, and developed the electronics & kinematic code to mimic human dancing recorded via IR motion tracking.",
-      "The main motor driver setup is an Arduino Mega connected to three dual high-current H-bridges powered by a 12V source."
+      "Engineered the mechanical centerpiece of Michelle Lopez's Pandemonium exhibit at the Franklin Institute: a Stewart platform that translates a live dancer's movement into expressive robotic motion.",
+      "Recorded a professional dancer via IR motion capture, then wrote the C++ firmware to parse the motion data and solve the inverse kinematics, mapping joint positions to actuator lengths so the platform performs a choreography derived directly from the original performance.",
+      "Built custom 3-DOF joints to mount the linear actuators to an aluminum T-slot frame. An Arduino Mega drives three dual high-current H-bridges on a 12V supply to control the linear actuators."
     ],
     meta: ["Stewart Platform", "Arduino Mega", "H-Bridge", "IR Motion Capture", "Kinematics"],
     media: [
       { type: "image", src: "assets/pandemonium/pandemonium.jpeg" },
       { type: "video", src: "assets/pandemonium/pandemonium_performance.mp4" },
       { type: "video", src: "assets/pandemonium/pandemonium_prototype.mp4" },
-      { type: "image", src: "assets/pandemonium/stewart_sim.png" }
+      { type: "image", src: "assets/pandemonium/stewart_sim.png" },
+      { type: "video", src: "assets/pandemonium/dancer_recording.mp4" },
     ],
     link: { url: "https://www.michellelopez.com/exhibitions/2025-pandemonium", label: "Pandemonium ↗" },
     captions: [
       "Stewart platform installed at the Franklin Institute",
       "Performance at the Pandemonium exhibit",
       "Motion testing",
-      "Stewart platform kinematics simulation"
+      "Stewart platform kinematics simulation",
+      "Dancer recording session with IR motion capture",
     ],
   },
   {
@@ -35,7 +37,7 @@ const PROJECTS = [
     title: "Motor & Pestle",
     subtitle: "University of Pennsylvania - Industrial Design",
     description:[
-      "A manual pepper mill styled as a single-cylinder engine — rotating the crank drives a piston that smashes peppercorns against a dimpled stone surface.",
+      "A manual pepper mill styled as a single-cylinder engine. Rotating the crank drives a piston that smashes peppercorns against a dimpled stone surface.",
       "Body in polished aluminum, cast iron base. Inspired by the 90s Harley-Davidson Evolution Engine and conceived as a deliberate counterpoint to electric kitchen gadgets: a protest against the automation and electrification of everything, and a prompt to question what \"innovation\" should actually achieve in our daily lives.",
       "Developed as a design concept for Penn's Industrial Design course."
     ],
@@ -62,9 +64,9 @@ const PROJECTS = [
     title: "CHOP Waiting Room Redesign",
     subtitle: "University of Pennsylvania - ARCH 7280 Final Project",
     description:[
-      "Redesigned the pre- and post-op waiting room experience for neurodivergent patients and families at the Children's Hospital of Philadelphia.",
-      "Used observation, expert interviews, and co-design sessions with neurodivergent children and peers to identify key pain points: sensory overload, lack of seating variety, long uncertain wait times, and no private spaces.",
-      "Final concept combines varied modular seating to accomodate a range of needs and a digital orientation tool to reduce anxiety before arrival.",
+      "Redesigned the pre- and post-op waiting rooms at the Children's Hospital of Philadelphia for neurodivergent patients and families, through observation, expert interviews, and co-design sessions with neurodivergent children.",
+      "Key pain points identified: sensory overload, lack of seating variety, long uncertain wait times, and no private spaces, limiting the ability for users to cater to their personal preferences.",
+      "Final concept addresses these through varied modular seating paired with a digital orientation app to familiarize families with the space and reduce anxiety before arrival.",
     ],
     meta: ["Co-Design", "Healthcare UX", "Penn IPD 5280", "2024"],
     media: [
@@ -91,8 +93,9 @@ const PROJECTS = [
     title: "Rockstar — Waldo",
     subtitle: "University of Pennsylvania - MEAM 5100 Waldo Project",
     description:[
-      "A waldo setup — identical input and output devices where the output mirrors the input in real time — driven by an ATmega32.",
-      "The input device has potentiometers at the joints; the output has servos driven by PWM signals. Three moving parts: a strumming arm driven at the elbow, a bobbing head driven at the neck, and a multi-piece arm that slides up and down the guitar neck driven at the shoulder.",
+      "A waldo setup driven by an ATmega32: identical input and output devices where the output mirrors the input in real time.",
+      "The input device has potentiometers at the joints; the output has servos driven by PWM signals.",
+      "The rockstar has three moving parts: a strumming arm driven at the elbow, a bobbing head driven at the neck, and a multi-piece arm that slides up and down the guitar neck driven at the shoulder.",
     ],
     meta: ["ATmega32", "Servo / PWM", "Potentiometers", "Waldo Mechanism"],
     media: [
@@ -111,7 +114,7 @@ const PROJECTS = [
     description: [
       "Semi-autonomous battle robot built for MEAM 5100 final at Penn while managing a $150 budget.",
       "Features a laser-cut acrylic frame in a modular stacking design for easy maintenance and iteration, with tank treads and an axe-inspired battle arm.",
-      "A double TOF sensor array on the side drives optimized wall-following and the front sensor handles obstacle detection. Custom bitwise communication protocols handle inter-Arduino messaging alongside I2C and UART for peripheral devices — the robot reached the semi-finals of the class tournament."
+      "A double TOF sensor array on the side drives optimized wall-following and the front sensor handles obstacle detection. Custom bitwise communication protocols handle inter-Arduino messaging alongside I2C and UART for peripheral devices. Reached the semi-finals of the class tournament."
     ],
     meta: ["ESP32", "TOF Sensors", "Tank Treads", "I2C / UART", "Penn MEAM 5100"],
     media: [
@@ -131,7 +134,7 @@ const PROJECTS = [
     subtitle: "University of Pennsylvania - ESE 5190 Final Project",
     description: [
       "A multi-layer secure safe with three sequential authentication steps: fingerprint scan, analog combination lock, and PIN entry via a 4×4 keypad.",
-      "Two ATmega328PB microcontrollers handle primary logic and actuator control; an ESP32 module manages biometrics. Custom GPIO-encoded communication was developed between MCUs without standard UART.",
+      "Two ATmega328PB microcontrollers handle primary logic and actuator control; an ESP32 module manages biometrics. Custom GPIO-encoded bitwise communication was developed between MCUs to quickly communicate passcode states.",
       "A DC motor drives a linear slider door; a servo actuates a secondary latch. LCD display guides the user through each step.",
       "Built within a $150 budget for ESE 5190 at Penn."
     ],
@@ -155,9 +158,9 @@ const PROJECTS = [
     title: "Engineering a Magnetometer using NV Centers in Diamonds",
     subtitle: "Hamilton College - Senior Physics Thesis",
     description: [
-      "Engineered a quantum magnetometer using diamond Nitrogen Vacancy (NV) centers for my senior physics thesis at Hamilton College, advised by Prof. Viva Horowitz.",
-      "NV centers are atomic-scale defects in diamond where a nitrogen atom replaces carbon next to a lattice vacancy. Their electrons fluoresce based on spin state: applying 2.87 GHz microwave radiation shifts electrons between spin sublevels, and a magnetic field splits those levels via the Zeeman effect — enabling precise field measurement through Optically Detected Magnetic Resonance (ODMR).",
-      "Designed and CNC-milled a grounded coplanar waveguide (GCPW) antenna from copper PCB, impedance-matched to 50 Ω and trace widths chosen to efficiently deliver the 2.87 GHz signal to the diamond sample. Built a lock-in chopping circuit to extract the weak ODMR signal from noise. Assembled and aligned a full confocal microscope system — 532 nm laser, dichroic mirror, avalanche photodiode, and photon counter — and successfully demonstrated magnetic field sensing.",
+      "Built a quantum magnetometer using diamond Nitrogen Vacancy (NV) centers for my senior physics thesis at Hamilton College.",
+      "NV centers are atomic defects that fluoresce based on electron spin state. At 2.87 GHz, microwave radiation shifts electrons between spin sublevels; a magnetic field splits those levels via the Zeeman effect, enabling field measurement through Optically Detected Magnetic Resonance (ODMR).",
+      "CNC-milled a 50 Ω impedance-matched GCPW antenna from copper PCB to deliver the microwave signal. Built a lock-in chopping circuit to extract the ODMR signal from noise, and assembled a full confocal microscope system to successfully demonstrate magnetic field sensing.",
     ],
     meta: ["CNC Milling", "Fusion 360", "RF / Microwave", "NV Diamonds", "Physics Thesis"],
     media: [
@@ -177,8 +180,8 @@ const PROJECTS = [
     subtitle: "Event Curation & Audio Engineering",
     description: [
       "Loud music and dancing create floor vibrations that travel into the turntable needle, causing feedback and skips. Two isolation setups were tested at a live event.",
-      "Setup 1: turntable with original feet removed and paper shimming to level the deck, laid upon a concrete slab and a brick with squash ball halves underneath — completely eliminated feedback and skips during the event.",
-      "Setup 2: turntable on tape rolls wrapped in rubber bands on a concrete slab and brick — removed continuous feedback but still skipped on nearby impulses and required an extremely delicate touch while manipulating the records and turntable."
+      "Setup 1: turntable with original feet removed and paper shimming to level the deck, laid upon a concrete slab and a brick with squash ball halves underneath. Completely eliminated feedback and skips during the event.",
+      "Setup 2: turntable on tape rolls wrapped in rubber bands on a concrete slab and brick. Removed continuous feedback but still skipped on nearby impulses and required an extremely delicate touch while manipulating the records and turntable."
     ],
     meta: ["Vibration Isolation", "Audio Engineering", "Live Events"],
     media: [
@@ -240,7 +243,7 @@ function initTabs() {
 // ─────────────────────────────────────────────────────────────
 function initGrid() {
   const cards = projectGrid.querySelectorAll(".file-card");
-  fileCount.textContent = `${cards.length} object(s)`;
+  if (fileCount) fileCount.textContent = `${cards.length} object(s)`;
   cards.forEach((card) => {
     const idx = parseInt(card.dataset.index, 10);
     card.addEventListener("click", () => openModal(idx));

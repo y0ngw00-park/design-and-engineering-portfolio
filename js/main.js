@@ -11,7 +11,7 @@ const PROJECTS = [
     title: "Pandemonium — Dancing Stewart Platform",
     subtitle: "Michelle Lopez - Pandemonium Exhibit",
     description: [
-      "Engineered the mechanical centerpiece of Michelle Lopez's Pandemonium exhibit at the Franklin Institute: a Stewart platform that translates a live dancer's movement into expressive robotic motion.",
+      "Engineered the mechanical centerpiece of Michelle Lopez's Pandemonium exhibit at the Franklin Institute: a Stewart platform that translates a dancer's choreography into expressive robotic motion.",
       "Recorded a professional dancer via IR motion capture, then wrote the C++ firmware to parse the motion data and solve the inverse kinematics, mapping joint positions to actuator lengths so the platform performs a choreography derived directly from the original performance.",
       "Built custom 3-DOF joints to mount the linear actuators to an aluminum T-slot frame. An Arduino Mega drives three dual high-current H-bridges on a 12V supply to control the linear actuators."
     ],

@@ -137,7 +137,7 @@ button {
   justify-content: center;
   gap: 4px;
   padding: 3px 12px;
-  min-width: 80px;
+  min-width: 75px;
   height: 23px;
   background-color: var(--face);
   border: 2px solid;
@@ -252,7 +252,15 @@ button {
 }
 
 .win-ctrl--close {
-  width: 18px;
+  width: auto;
+  padding: 0 6px;
+  gap: 4px;
+}
+
+.win-ctrl__label {
+  font-size: 11px;
+  color: var(--title-text);
+  white-space: nowrap;
 }
 
 /* ─────────────────────────────────────────────
@@ -944,6 +952,7 @@ button {
   display: flex;
   align-items: center;
   gap: 6px;
+  margin: 0 auto;
 }
 
 .win-dialog__counter {

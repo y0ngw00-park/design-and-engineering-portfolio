@@ -37,7 +37,7 @@ const PROJECTS = [
     description:[
       "A manual pepper mill styled as a single-cylinder engine — rotating the crank drives a piston that smashes peppercorns against a dimpled stone surface.",
       "Body in polished aluminum, cast iron base. Inspired by the 90s Harley-Davidson Evolution Engine and conceived as a deliberate counterpoint to electric kitchen gadgets: a protest against the automation and electrification of everything, and a prompt to question what \"innovation\" should actually achieve in our daily lives.",
-      "Developed as a design concept for Penn's Industrial Design studio."
+      "Developed as a design concept for Penn's Industrial Design course."
     ],
     meta: ["Industrial Design", "Fabrication", "IPD 5270", "2024"],
     media: [
@@ -113,7 +113,7 @@ const PROJECTS = [
       "Features a laser-cut acrylic frame in a modular stacking design for easy maintenance and iteration, with tank treads and an axe-inspired battle arm.",
       "A double TOF sensor array on the side drives optimized wall-following and the front sensor handles obstacle detection. Custom bitwise communication protocols handle inter-Arduino messaging alongside I2C and UART for peripheral devices — the robot reached the semi-finals of the class tournament."
     ],
-    meta: ["ESP32-S3", "TOF Sensors", "Tank Treads", "I2C / UART", "Penn MEAM 5100"],
+    meta: ["ESP32", "TOF Sensors", "Tank Treads", "I2C / UART", "Penn MEAM 5100"],
     media: [
       { type: "image", src: "assets/battle_bot/full_robot.jpg" },
       { type: "image", src: "assets/battle_bot/sensor_array.jpg" },
@@ -452,7 +452,7 @@ function goToProject(delta) {
 // EVENT LISTENERS
 // ─────────────────────────────────────────────────────────────
 modalClose.addEventListener("click", closeModal);
-modalCloseBtn.addEventListener("click", closeModal);
+if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeModal);
 modalPrev.addEventListener("click", () => goToProject(-1));
 modalNext.addEventListener("click", () => goToProject(+1));
 modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });

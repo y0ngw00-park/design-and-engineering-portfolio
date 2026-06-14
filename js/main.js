@@ -18,6 +18,7 @@ const PROJECTS = [
     meta: ["Stewart Platform", "Arduino Mega", "H-Bridge", "IR Motion Capture", "Kinematics"],
     media: [
       { type: "image", src: "assets/pandemonium/pandemonium.jpeg" },
+      { type: "image", src: "assets/pandemonium/robot_close_up.png" },
       { type: "video", src: "assets/pandemonium/pandemonium_performance.mp4" },
       { type: "video", src: "assets/pandemonium/pandemonium_prototype.mp4" },
       { type: "image", src: "assets/pandemonium/stewart_sim.png" },
@@ -26,6 +27,7 @@ const PROJECTS = [
     link: { url: "https://www.michellelopez.com/exhibitions/2025-pandemonium", label: "Pandemonium ↗" },
     captions: [
       "Stewart platform installed at the Franklin Institute",
+      "Stewart platform during Planetarium Show",
       "Performance at the Pandemonium exhibit",
       "Motion testing",
       "Stewart platform kinematics simulation",

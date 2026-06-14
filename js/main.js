@@ -27,7 +27,7 @@ const PROJECTS = [
     link: { url: "https://www.michellelopez.com/exhibitions/2025-pandemonium", label: "Pandemonium ↗" },
     captions: [
       "Stewart platform installed at the Franklin Institute",
-      "Stewart platform during Planetarium Show",
+      "Stewart platform during planetarium show",
       "Performance at the Pandemonium exhibit",
       "Motion testing",
       "Stewart platform kinematics simulation",
@@ -56,7 +56,7 @@ const PROJECTS = [
       "Angled view",
       "Front view",
       "Side view",
-      "Side drawing before 3D modeling",
+      "Side view drawing",
       "Opened lid illustration",
       "Inner pepper crushing mechanism",
     ],

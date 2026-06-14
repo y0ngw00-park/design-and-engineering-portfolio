@@ -18,7 +18,7 @@ const PROJECTS = [
     meta: ["Stewart Platform", "Arduino Mega", "H-Bridge", "IR Motion Capture", "Kinematics"],
     media: [
       { type: "image", src: "assets/pandemonium/pandemonium.jpeg" },
-      { type: "image", src: "assets/pandemonium/robot_close_up.png" },
+      { type: "image", src: "assets/pandemonium/robot_close_up.jpg" },
       { type: "video", src: "assets/pandemonium/pandemonium_performance.mp4" },
       { type: "video", src: "assets/pandemonium/pandemonium_prototype.mp4" },
       { type: "image", src: "assets/pandemonium/stewart_sim.png" },

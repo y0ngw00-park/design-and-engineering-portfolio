@@ -7,6 +7,29 @@ console.log("Portfolio loaded successfully!");
 // ─────────────────────────────────────────────────────────────
 const PROJECTS = [
   {
+    id: "chess",
+    title: "Modern Staunton Chess Set",
+    subtitle: "University of Pennsylvania - Integrated CAD/CAM & Machining",
+    description: [
+      "Aluminum & Brass chess set designed as a hybrid of the classic Staunton design and sleek modern silhouettes.",
+      "Manufactured on a CNC lathe, with some pieces like the King & Knight requiring 3 axis milling.",
+      "Buffed and polished to a mirror finish by hand."
+    ],
+    meta: ["CNC Machining", "Chess", "Design", "2026"],
+    media: [
+      { type: "image", src: "assets/chess/full_board_grass.JPG" },
+      { type: "image", src: "assets/chess/pieces_closeup.JPG" },
+      { type: "image", src: "assets/chess/king_lathe.jpg" },
+      { type: "image", src: "assets/chess/polishing.JPEG" },
+    ],
+    captions: [
+      "Full chess set",
+      "All pieces",
+      "King being machined on a CNC lathe",
+      "Bishop being hand polished",
+    ],
+  },
+  {
     id: "pandemonium",
     title: "Pandemonium — Dancing Stewart Platform",
     subtitle: "Michelle Lopez - Pandemonium Exhibit",
@@ -193,6 +216,33 @@ const PROJECTS = [
       "Setup 2: tape rolls & rubber bands on concrete slab",
     ],
   },
+  // // PLACEHOLDER PROJECT: fill in every "[...]" value, then see README.md for details.
+  // {
+  //   id: "new_project",
+  //   title: "[Project Name]",
+  //   subtitle: "[Role / Category / Tags] - [Year, e.g. 2026]",
+  //   description: [
+  //     "[PLACEHOLDER: Short overview of the project: what it is and why you made it.]",
+  //     "[PLACEHOLDER: Second paragraph: your role, process, and key technical or design decisions.]",
+  //     "[PLACEHOLDER: Third paragraph: outcome, results, or what you learned.]"
+  //   ],
+  //   meta: ["[Tag 1]", "[Tag 2]", "[Tag 3]", "2026"],
+  //   media: [
+  //     // The FIRST media item is what opens first in the viewer. The card cover on the
+  //     // grid is set separately in index.html (<img src=...> inside the data-index="8" card).
+  //     { type: "image", src: "assets/new_project/placeholder_cover.svg" },
+  //     // Add more items like these (keep captions[] in the same order):
+  //     // { type: "image", src: "assets/new_project/mockup_1.jpg" },
+  //     // { type: "video", src: "assets/new_project/demo.mp4" },
+  //   ],
+  //   // Optional single external link (live site, Figma, GitHub...). Remove the "//" to enable.
+  //   // link: { url: "https://example.com", label: "[Link label] ↗" },
+  //   captions: [
+  //     "[Caption for cover image]",
+  //     // "[Caption for mockup_1.jpg]",
+  //     // "[Caption for demo.mp4]",
+  //   ],
+  // },
 ];
 
 // ─────────────────────────────────────────────────────────────

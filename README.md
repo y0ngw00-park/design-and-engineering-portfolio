@@ -27,7 +27,8 @@ Git remote: `https://github.com/y0ngw00-park/design-and-engineering-portfolio` (
 │   ├── senior_thesis/
 │   ├── turntable_isolation/
 │   ├── new_project/      ← PLACEHOLDER entry's folder (see "Placeholder entry" below)
-│   └── profile/          ← Profile photo and the hockey photo (About tab)
+│   ├── profile/          ← Profile photo and the hockey photo (About tab)
+│   └── <resume>.pdf      ← Your resume (the "Resume" button opens this file; see "Updating your resume")
 └── .claude/              ← Local AI-tool settings. Ignore it.
 ```
 
@@ -38,21 +39,21 @@ Git remote: `https://github.com/y0ngw00-park/design-and-engineering-portfolio` (
 | The**card** on the grid | `index.html` (search `id="project-grid"`) | Cover thumbnail + card name                         |
 | The**project data**     | `js/main.js` (the `PROJECTS` array)       | Title, subtitle, description, media, captions, link |
 
-The two are linked **by order**: the card with `data-index="3"` opens the 4th item (counting from 0) in `PROJECTS`. So:
+The two are linked **by ID, not by position**: the card with `data-id="chess"` opens the `PROJECTS` entry with `id: "chess"`. So:
 
-> **Card order in `index.html` must match the order in `PROJECTS`, and `data-index` must be 0, 1, 2, ... with no gaps.**
+> **Rules:** (1) every card's `data-id` must exactly match one project's `id` in `main.js`; (2) every `id` must be unique; (3) the **order of the cards in `index.html`** is the order shown on the grid, and in the popup's Previous/Next buttons. The order inside the `PROJECTS` array does not matter.
 
-The "1 / 9" counter and Previous/Next buttons in the popup update automatically from the length of `PROJECTS`.
+Because of this, you can add a project at the **top**, reorder, or delete without renumbering anything. If an ID is missing, duplicated, or misspelled, that card is hidden and a message appears in the browser console (Cmd+Option+J).
 
-Current order: 0 Pandemonium, 1 Motor & Pestle, 2 CHOP Waiting Room, 3 Rockstar, 4 Battle Bot, 5 Helix Vault, 6 Senior Thesis, 7 Turntable Isolation, 8 **[Project Name] (placeholder)**.
+Current order (top of grid first): `chess`, `pandemonium`, `motor_pestle`, `chop_waiting_room`, `rockstar`, `battle_bot`, `helix_vault`, `senior_thesis`, `turntable_isolation`, and a commented-out `new_project` placeholder.
 
 ---
 
 ## 2. How to Add a New Project
 
 1. **Make a media folder**: `assets/<project_id>/` (lowercase, underscores, no spaces — e.g. `assets/smart_lamp/`). Put the images/videos in it.
-2. **Add the data** to the `PROJECTS` array in `js/main.js`: paste the template below **just before the final `];`** (add it at the end so existing numbers don't shift). Mind the comma after the previous `},`.
-3. **Add the card** in `index.html`: paste the card template at the end of the `<div class="file-grid" id="project-grid">` block, after the last `</button>`. Set `data-index` to the next number (the new project's position in `PROJECTS`, starting from 0).
+2. **Add the data** to the `PROJECTS` array in `js/main.js`: paste the template below anywhere inside the array (e.g. just before the final `];`). Mind the comma after the previous `},`.
+3. **Add the card** in `index.html`: paste the card template inside the `<div class="file-grid" id="project-grid">` block. **Put it at the very top to show it first**, or at the bottom to show it last. Set `data-id` to the same value as the project's `id`.
 4. **Preview** locally (section 6), click through the new project, then publish.
 
 ### Template: project data (`js/main.js`)
@@ -85,7 +86,7 @@ Current order: 0 Pandemonium, 1 Motor & Pestle, 2 CHOP Waiting Room, 3 Rockstar,
 ### Template: grid card (`index.html`)
 
 ```html
-            <button class="file-card" data-index="9" aria-label="Open My Project">
+            <button class="file-card" data-id="my_project" aria-label="Open My Project">
               <div class="file-card__thumb"><img src="assets/my_project/cover.jpg" alt="" loading="lazy" /></div>
               <span class="file-card__name">My Project Title</span>
             </button>
@@ -101,7 +102,7 @@ Notes:
 
 ### The placeholder entry already in the repo
 
-A ninth entry, `[Project Name]`, was added as a ready-to-fill example (card in `index.html` with `data-index="8"`, data in `js/main.js` with `id: "new_project"`). To finish it:
+A ninth entry, `[Project Name]`, was added as a ready-to-fill example (card in `index.html` with `data-id="new_project"`, data in `js/main.js` with `id: "new_project"`; both are currently commented out so they don't appear on the site). To finish it:
 
 1. Rename `assets/new_project/` to your real folder name and drop your images there; delete `placeholder_cover.svg`.
 2. In `js/main.js`, replace every `[...]` value, fix the `src` paths, and uncomment/add the extra media, captions, and `link` lines.
@@ -119,20 +120,19 @@ A ninth entry, `[Project Name]`, was added as a ready-to-fill example (card in `
 - **Captions:** edit its `captions` array (keep the same order and count as `media`).
 - **Card name or cover thumbnail:** edit the matching card in `index.html`.
 - **Swap a photo:** easiest is to overwrite the file in `assets/<project>/` using the **same filename**; nothing else needs to change. (If you change the filename, update `src` in `main.js`, and the card `<img src>` if it is the cover.)
-- **Reorder projects:** move the block in `main.js` AND the card in `index.html`, then renumber `data-index` 0, 1, 2, ... top to bottom.
+- **Reorder projects:** move the card up or down in `index.html`. Only the card order controls display order; nothing needs renumbering.
 
 ### Remove a project cleanly
 
 1. In `js/main.js`, delete the whole `{ id: "...", ... },` block for that project.
 2. In `index.html`, delete that project's `<button class="file-card" ...> ... </button>` card.
-3. **Renumber `data-index`** on every card below it so they run 0, 1, 2, ... with no gaps.
-4. Delete its media folder:
+3. Delete its media folder:
    ```bash
    git rm -r assets/<project_id>
    ```
 
    (Before deleting, check nothing else uses the files: `grep -rn "assets/<project_id>" index.html js css`.)
-5. Preview, then publish.
+4. Preview, then publish.
 
 ### Remove just one image/video from a project
 
@@ -199,7 +199,7 @@ Delete its line from `media` **and** the same-position line in `captions` (they 
 
 - A missing comma between project blocks in `main.js`, or an unescaped `"` inside text → **the whole project list fails to load**. If the popup stops working, open the browser DevTools console (Cmd+Option+J) to see which line is wrong.
 - `media` and `captions` having different lengths (captions go out of sync).
-- `data-index` numbers that skip or repeat, or cards in a different order than `PROJECTS`.
+- A card whose `data-id` doesn't exactly match a project `id` (typos, extra spaces, capitalization), or two projects sharing the same `id`. The card is hidden and the console says why.
 - Wrong file path or capitalization in `src` (works on your Mac, fails on GitHub Pages).
 - Not committing the new files in `assets/` (the page would publish with broken images).
 
@@ -220,7 +220,7 @@ There is no build. Either:
 
   then visit http://localhost:8000. Press `Ctrl+C` in the terminal to stop it. After editing, refresh with Cmd+Shift+R to bypass cache.
 
-Check: card appears, opens, images/videos load, captions line up, Previous/Next works, the counter shows the right total.
+Check: card appears, opens, images/videos load, captions line up, Previous/Next works.
 
 ### Publish
 
@@ -237,6 +237,25 @@ git push origin main
 If `git push` is rejected because the remote has newer commits: `git pull --rebase origin main`, then `git push origin main`.
 
 To undo a bad publish quickly: `git revert HEAD` then `git push origin main`.
+
+### Updating your resume
+The **Resume** button (next to Email and LinkedIn at the top of `index.html`) opens one PDF in a new browser tab. The visitor can read it there and use the browser's own download button. The file it opens is whatever the button's `href` says:
+
+```html
+<a href="assets/Yongwoo_Park_Resume.pdf" class="win-btn" target="_blank" rel="noopener noreferrer">↓&nbsp; Resume</a>
+```
+
+To update your resume, overwrite the PDF at the `href` path with your new PDF, **keeping the exact same file name (including capitalization)**, then commit and push:
+
+```bash
+git add assets/
+git commit -m "Update resume"
+git push origin main
+```
+
+If you use a different file name or path, change the button's `href` to match. A wrong name or path makes the button open a 404 page. After updating, a browser may show the old file for a few minutes; hard refresh (Cmd+Shift+R).
+
+(The button has no `download` attribute, so it opens the PDF instead of saving it right away. To force a direct download instead, add `download="Your_Name_Resume.pdf"` to that `<a>` tag.)
 
 ### Housekeeping tips
 

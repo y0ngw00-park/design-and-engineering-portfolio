@@ -956,15 +956,8 @@ button {
 .win-dialog__nav {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
   margin: 0 auto;
-}
-
-.win-dialog__counter {
-  font-size: 11px;
-  color: var(--shadow-dark);
-  min-width: 40px;
-  text-align: center;
 }
 
 /* ─────────────────────────────────────────────

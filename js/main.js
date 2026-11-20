@@ -229,7 +229,7 @@ const PROJECTS = [
   //   meta: ["[Tag 1]", "[Tag 2]", "[Tag 3]", "2026"],
   //   media: [
   //     // The FIRST media item is what opens first in the viewer. The card cover on the
-  //     // grid is set separately in index.html (<img src=...> inside the data-index="8" card).
+  //     // grid is set separately in index.html (<img src=...> inside the data-id="new_project" card).
   //     { type: "image", src: "assets/new_project/placeholder_cover.svg" },
   //     // Add more items like these (keep captions[] in the same order):
   //     // { type: "image", src: "assets/new_project/mockup_1.jpg" },
@@ -266,7 +266,6 @@ const modalSubtitle        = document.getElementById("modal-subtitle");
 const modalTitle      = document.getElementById("modal-title");
 const modalDesc       = document.getElementById("modal-desc");
 const modalTopTitle   = document.getElementById("modal-topbar-title");
-const modalCounter    = document.getElementById("modal-counter");
 const projectGrid     = document.getElementById("project-grid");
 const fileCount       = document.getElementById("file-count");
 
@@ -291,14 +290,39 @@ function initTabs() {
 // ─────────────────────────────────────────────────────────────
 // FILE GRID
 // ─────────────────────────────────────────────────────────────
+// Cards are matched to projects by ID (data-id on the card === id in PROJECTS),
+// never by position, so adding / reordering / removing entries can't make a card
+// open the wrong project. The ORDER OF THE CARDS in index.html is the single source
+// of truth for display order, and the Previous/Next buttons.
 function initGrid() {
-  const cards = projectGrid.querySelectorAll(".file-card");
+  const cards = Array.from(projectGrid.querySelectorAll(".file-card"));
   if (fileCount) fileCount.textContent = `${cards.length} object(s)`;
+
+  // Rebuild PROJECTS in the same order as the cards, and flag any ID problems.
+  const seen    = new Set();
+  const ordered = [];
   cards.forEach((card) => {
-    const idx = parseInt(card.dataset.index, 10);
-    card.addEventListener("click", () => openModal(idx));
+    const id = card.dataset.id;
+    const project = PROJECTS.find((p) => p.id === id);
+    if (!id)                { console.error("Portfolio: a .file-card is missing data-id.", card); card.hidden = true; return; }
+    if (seen.has(id))       { console.error(`Portfolio: duplicate card data-id "${id}".`, card); card.hidden = true; return; }
+    if (!project)           { console.error(`Portfolio: no project in PROJECTS with id "${id}".`, card); card.hidden = true; return; }
+    seen.add(id);
+    ordered.push(project);
+  });
+  const ids = PROJECTS.map((p) => p.id);
+  ids.filter((id, i) => ids.indexOf(id) !== i)
+     .forEach((id) => console.error(`Portfolio: duplicate id "${id}" in PROJECTS.`));
+  PROJECTS.filter((p) => !seen.has(p.id))
+          .forEach((p) => console.warn(`Portfolio: project "${p.id}" has no card in index.html, so it is not shown.`));
+  PROJECTS.splice(0, PROJECTS.length, ...ordered);
+
+  cards.forEach((card) => {
+    if (card.hidden) return;
+    const id = card.dataset.id;
+    card.addEventListener("click", () => openModal(id));
     card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(idx); }
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(id); }
     });
   });
 }
@@ -306,8 +330,10 @@ function initGrid() {
 // ─────────────────────────────────────────────────────────────
 // OPEN / CLOSE MODAL
 // ─────────────────────────────────────────────────────────────
-function openModal(projectIdx) {
-  currentIndex = clamp(projectIdx, 0, PROJECTS.length - 1);
+function openModal(projectId) {
+  const idx = PROJECTS.findIndex((p) => p.id === projectId);
+  if (idx === -1) { console.error(`Portfolio: cannot open unknown project "${projectId}".`); return; }
+  currentIndex = idx;
   mediaIndex   = 0;
   populateModal();
   modal.hidden = false;
@@ -320,7 +346,7 @@ function closeModal() {
   if (activeVideo) activeVideo.pause();
   modal.hidden = true;
   document.body.style.overflow = "";
-  const card = projectGrid.querySelector(`[data-index="${currentIndex}"]`);
+  const card = projectGrid.querySelector(`[data-id="${PROJECTS[currentIndex].id}"]`);
   if (card) card.focus();
 }
 
@@ -344,8 +370,6 @@ function populateModal() {
   }
   modalDesc.innerHTML = html;
   modalTopTitle.textContent = project.title;
-  modalCounter.textContent  = `${currentIndex + 1} / ${PROJECTS.length}`;
-
   modalPrev.disabled = currentIndex === 0;
   modalNext.disabled = currentIndex === PROJECTS.length - 1;
 
